@@ -9,6 +9,8 @@ import {useSelector} from 'react-redux'
 const LogInSignUp = () => {
   const loading = useSelector((state) => state.userReducer.loading);
   const isAuth = useSelector((state) => state.userReducer.isAuth)
+  const user = useSelector((state) => state.userReducer.user)
+
 
 
   const [mail, setMail] = useState()
@@ -56,28 +58,29 @@ const LogInSignUp = () => {
   const HandleChange = () => {
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
-    const container = document.querySelector(".container");
+    const containerrr = document.querySelector(".containerrr");
 
     sign_up_btn.addEventListener("click", () => {
-      container.classList.add("sign-up-mode");
+      containerrr.classList.add("sign-up-mode");
 
       sign_in_btn.addEventListener("click", () => {
-        container.classList.remove("sign-up-mode");
+        containerrr.classList.remove("sign-up-mode");
       });
     });
 
 
   }
 
-  if (isAuth) return <Redirect to="/profile" />;
+  if (isAuth) return <Redirect to="/home" />;
 
   return (
 
+
     <div>
-       {loading ? (
+     {loading? (
         <h1> Please wait </h1>
       ) : (
-      <div className="container">
+      <div className="containerrr">
         <div className="forms-container">
           <div className="signin-signup">
             <form action="#" className="sign-in-form">
@@ -90,7 +93,7 @@ const LogInSignUp = () => {
                 <i className="fas fa-lock"></i>
                 <input onChange={(e)=>setPass(e.target.value)} type="password" name="pass" placeholder="Password" />
               </div>
-              <input onClick={login} type="submit" value="Login" className="btn solid" />
+              <input onClick={login} type="submit" value="Login" className="btnn solid" />
             </form>
             <form action="#" className="sign-up-form">
               <h2 className="title">Sign up</h2>
@@ -113,7 +116,7 @@ const LogInSignUp = () => {
                 <i className="fas fa-envelope"></i>
                 <input onChange={(e) => setBio(e.target.value)} type="text" name="bio" placeholder="Bio" />
               </div>
-              <button onClick={adduser} type="submit" className="btn" value="Sign up" >Sing up</button>
+              <button onClick={adduser} type="submit" className="btnn" value="Sign up" >Sing up</button>
 
             </form>
           </div>
@@ -127,7 +130,7 @@ const LogInSignUp = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
                 ex ratione. Aliquid!
             </p>
-              <button onClick={HandleChange} className="btn transparent" id="sign-up-btn">
+              <button onClick={HandleChange} className="btnn transparent" id="sign-up-btn">
                 Sign up
             </button>
             </div>
@@ -140,7 +143,7 @@ const LogInSignUp = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
                 laboriosam ad deleniti.
             </p>
-              <button className="btn transparent" id="sign-in-btn">
+              <button className="btnn transparent" id="sign-in-btn">
                 Sign in
             </button>
             </div>

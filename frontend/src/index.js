@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './JS/store/store';
 import {BrowserRouter} from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css'
+
+
 
 ReactDOM.render(
   <BrowserRouter>

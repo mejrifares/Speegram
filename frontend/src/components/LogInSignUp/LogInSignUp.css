@@ -11,7 +11,7 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
-.container {
+.containerrr {
   position: relative;
   width: 100%;
   background-color: #fff;
@@ -132,7 +132,7 @@ form.sign-in-form {
   border-color: #4481eb;
 }
 
-.btn {
+.btnn {
   width: 150px;
   background-color: #9B63FF;
   border: none;
@@ -160,7 +160,7 @@ form.sign-in-form {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.container:before {
+.containerrr:before {
   content: "";
   position: absolute;
   height: 2000px;
@@ -216,7 +216,7 @@ form.sign-in-form {
   padding: 0.7rem 0;
 }
 
-.btn.transparent {
+.btnn.transparent {
   margin: 0;
   background: none;
   border: 2px solid #fff;
@@ -233,45 +233,45 @@ form.sign-in-form {
 
 /* ANIMATION */
 
-.container.sign-up-mode:before {
+.containerrr.sign-up-mode:before {
   transform: translate(100%, -50%);
   right: 52%;
 }
 
-.container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.containerrr.sign-up-mode .left-panel .image,
+.containerrr.sign-up-mode .left-panel .content {
   transform: translateX(-800px);
 }
 
-.container.sign-up-mode .signin-signup {
+.containerrr.sign-up-mode .signin-signup {
   left: 25%;
 }
 
-.container.sign-up-mode form.sign-up-form {
+.containerrr.sign-up-mode form.sign-up-form {
   opacity: 1;
   z-index: 2;
 }
 
-.container.sign-up-mode form.sign-in-form {
+.containerrr.sign-up-mode form.sign-in-form {
   opacity: 0;
   z-index: 1;
 }
 
-.container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.containerrr.sign-up-mode .right-panel .image,
+.containerrr.sign-up-mode .right-panel .content {
   transform: translateX(0%);
 }
 
-.container.sign-up-mode .left-panel {
+.containerrr.sign-up-mode .left-panel {
   pointer-events: none;
 }
 
-.container.sign-up-mode .right-panel {
+.containerrr.sign-up-mode .right-panel {
   pointer-events: all;
 }
 
 @media (max-width: 870px) {
-  .container {
+  .containerrr {
     min-height: 800px;
     height: 100vh;
   }
@@ -283,7 +283,7 @@ form.sign-in-form {
   }
 
   .signin-signup,
-  .container.sign-up-mode .signin-signup {
+  .containerrr.sign-up-mode .signin-signup {
     left: 50%;
   }
 

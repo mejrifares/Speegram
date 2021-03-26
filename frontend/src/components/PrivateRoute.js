@@ -9,7 +9,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <div>
       <Route {...rest} render={(props) => <Component {...props} />} />
-      
 
     </div>
   );

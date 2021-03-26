@@ -8,6 +8,7 @@ const inisialstate = {
 }
 
 const userReducer = (state = inisialstate, {type, payload}) =>{
+    console.log(payload)
 
     switch (type) {
 
@@ -24,6 +25,7 @@ const userReducer = (state = inisialstate, {type, payload}) =>{
             ...state , 
             loading : false,
             user : payload,
+            
             
         }
 

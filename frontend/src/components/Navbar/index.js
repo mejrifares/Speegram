@@ -1,4 +1,6 @@
 import React from 'react';
+import {Redirect} from "react-router-dom"
+import {useSelector} from "react-redux"
 import {
   Nav,
   NavLink,
@@ -9,13 +11,27 @@ import {
 } from './NavbarElements';
 
 const Navbar = () => {
+  const user = useSelector((state) => state.userReducer.user)
+
+  const HandleLogOut = () =>  {
+    localStorage.clear()
+    window.location.reload()
+
+
+  }
+  if(!user) return <Redirect to="/"/>
+
   return (
+
     <>
       <Nav>
         <NavLink to='/'>
           {/* <img src={require('../../images/logo.svg')} alt='logo' /> */}
+          <img style={{width : "210px"}} src="./images/speegram.png" alt="logo" />
         </NavLink>
-        <Bars />
+        {/* <div>
+          <input type="text" placeholder="search"/>
+        </div> */}
         <NavMenu>
           <NavLink to='/home' activeStyle>
             Home
@@ -28,7 +44,7 @@ const Navbar = () => {
           </NavLink>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/logout'>Log Out</NavBtnLink>
+          <NavBtnLink onClick={HandleLogOut} to='/'>Log Out</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

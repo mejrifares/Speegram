@@ -44,10 +44,19 @@ export const profile = () => async (dispatch) => {
       };
   
       const user = await axios.get("/user/current", config);
-  
+        console.log(user)
       dispatch({ type: GET_PROFILE_SUCCESS, payload: user.data });
     } catch (error) {
       dispatch({ type: GET_PROFILE_FAIL, payload: error.response.data });
     }
+  };
+
+  export const EditProfile = (id, EditProfile) => (dispatch) => {
+
+
+    axios
+      .put(`/user/update/${id}`, EditProfile )
+      .then(() => dispatch(profile()))
+      .catch((err) => console.log(err));
   };
   
