@@ -1,47 +1,44 @@
-import { useEffect } from "react"
-import './App.css';
-import LogInSignUp from './components/LogInSignUp/LogInSignUp'
-import { Route, Switch} from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import PrivateRoute from "./components/PrivateRoute";
+import { useContext } from "react";
+import LogInSignUp from "./components/LogInSignUp/LogInSignUp";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
-import { profile } from "./JS/action/action";
 import EditUser from "./components/Profile/EditUser";
 import Home from "./components/Home/Home";
 import Messanger from "./components/Messanger/Messanger";
-import SinglePage from "./pages/SinglePage"
+import { AuthContext } from "./context/AuthContext";
+import Notification from "./components/notification/Notification";
+import People from "./components/people/People";
 
 function App() {
-
-
-
-  const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.userReducer.isAuth);
-
-  useEffect(() => {
-    dispatch(profile());
-
-  },[isAuth]);
-
+  const {user} = useContext(AuthContext)
 
 
   return (
-    <div className="App">
-    
-      <Switch>
-        <Route exact path="/" render={(props) => <LogInSignUp {...props} />} />
-        <PrivateRoute exact path="/profile" component={Profile} />
-        <PrivateRoute path="/editprofile" component={EditUser} />
-        <PrivateRoute path="/home" component={Home} />
-        <PrivateRoute path="/messanger" component={Messanger} />
-        <Route path="/posts/:postId" component={SinglePage} />
-
-
-
-      </Switch>
-  
-
-    </div>
+    <>
+        <Switch>
+          <Route exact path="/">
+            {user ? <Home /> : <LogInSignUp/> }
+          </Route>
+          <Route exact path="/loginsignup">
+            {user ? <Redirect to="/"/> : <LogInSignUp />}
+          </Route>
+          <Route exact path="/profile/:username">
+            <Profile />
+          </Route>
+          <Route exact path="/messanger">
+            <Messanger />
+          </Route>
+          <Route exact path="/notification">
+            <Notification />
+          </Route>
+          <Route exact path="/editprofile">
+            <EditUser />
+          </Route>
+          <Route exact path="/people">
+            <People />
+          </Route>
+        </Switch>
+    </>
   );
 }
 

@@ -1,59 +1,63 @@
-import React, { useState } from 'react'
-import './LogInSignUp.css'
-import { useDispatch } from "react-redux"
-import { Userlogin, User_Register } from '../../JS/action/action'
-import { Redirect } from 'react-router'
-import {useSelector} from 'react-redux'
+import React, { useContext, useRef, useState } from "react";
+import "./LogInSignUp.css";
+import { useHistory } from "react-router";
+import { CircularProgress } from "@material-ui/core";
 
+import { FaUser } from "react-icons/fa";
+import { FaUserLock } from "react-icons/fa";
+
+import { loginCall } from "../../ApiCalls";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 const LogInSignUp = () => {
-  const loading = useSelector((state) => state.userReducer.loading);
-  const isAuth = useSelector((state) => state.userReducer.isAuth)
-  const user = useSelector((state) => state.userReducer.user)
+  const [errorLog, setErrorLog] = useState(false);
+  const [successLog, setSuccessLog] = useState(false);
+  const { isFetching, dispatch } = useContext(AuthContext);
+  const history = useHistory();
 
+  const mail = useRef();
+  const pass = useRef();
 
+  const login = async (e) => {
+    e.preventDefault();
 
-  const [mail, setMail] = useState()
-  const [pass, setPass] = useState()
+    try {
+      loginCall(
+        { email: mail.current.value, password: pass.current.value },
+        dispatch,
+        setSuccessLog(true)
+      );
+    } catch (err) {
+      setErrorLog(true);
+    }
+  };
+  
 
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
+  const bio = useRef();
 
-  const login = (e) => {
-
-    e.preventDefault()
-
-    dispatch(Userlogin({
-      email : mail,
-      password : pass
-    }))
-
-  }
-
-
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [bio, setBio] = useState()
-  const [phone, setPhone] = useState()
-  const dispatch = useDispatch()
-
-  const adduser = (e) => {
-    e.preventDefault()
-
-    dispatch(User_Register({
-      name,
-      email,
-      password,
-      bio,
-      phone
-    }))
-
-    setName("")
-    setEmail("")
-    setPassword("")
-    setBio("")
-    setPhone ("")
-  }
-
+  const singUp = async () => {
+    // e.preventDefault();
+    if (passwordAgain.current.value !== password.current.value) {
+      passwordAgain.current.setCustomValidity("Faliled password!");
+    }
+    const newUser = {
+      username: username.current.value,
+      email: email.current.value,
+      password: password.current.value,
+      passwordAgain: passwordAgain.current.value,
+      bio: bio.current.value,
+    };
+    try {
+      await axios.post("/auth/register", newUser);
+      // res.status(200).json("register succsefully")
+      history.push("/loginsignup");
+    } catch (err) {}
+  };
 
   const HandleChange = () => {
     const sign_in_btn = document.querySelector("#sign-in-btn");
@@ -67,57 +71,115 @@ const LogInSignUp = () => {
         containerrr.classList.remove("sign-up-mode");
       });
     });
+  };
 
-
-  }
-
-  if (isAuth) return <Redirect to="/home" />;
+  // if (isAuth) return <Redirect to="/home" />;
 
   return (
-
-
     <div>
-     {loading? (
-        <h1> Please wait </h1>
-      ) : (
       <div className="containerrr">
         <div className="forms-container">
           <div className="signin-signup">
             <form action="#" className="sign-in-form">
               <h2 className="title">Sign in</h2>
               <div className="input-field">
-                <i className="fas fa-user"></i>
-                <input onChange={(e)=>setMail(e.target.value)} type="text" name="mail" placeholder="Username" />
+                <div className="inputIcon">
+                  <FaUser />
+                </div>
+                <input
+                  // onChange={(e) => setMail(e.target.value)}
+                  type="text"
+                  // name="email"
+                  ref={mail}
+                  placeholder="Username"
+                />
               </div>
               <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input onChange={(e)=>setPass(e.target.value)} type="password" name="pass" placeholder="Password" />
+                <div className="inputIcon">
+                  <FaUserLock />
+                </div>
+                <input
+                  // onChange={(e) => setPass(e.target.value)}
+                  type="password"
+                  // name="password"
+                  ref={pass}
+                  placeholder="Password"
+                />
               </div>
-              <input onClick={login} type="submit" value="Login" className="btnn solid" />
+              <button
+                onClick={login}
+                type="submit"
+                value="login"
+                className="btnn solid"
+              >
+                {isFetching ? (
+                  <CircularProgress color="#fff" size="25px" />
+                ) : (
+                  "Login"
+                )}
+              </button>
+              {successLog && (
+                <sapn>Login Success</sapn>
+              )}
+              {errorLog && (
+                <span>Somthing Is Wrong</span>
+              )}
             </form>
             <form action="#" className="sign-up-form">
               <h2 className="title">Sign up</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder="Username" />
+                <input
+                  // onChange={(e) => setName(e.target.value)}
+                  type="text"
+                  placeholder="Username"
+                  ref={username}
+                />
               </div>
               <div className="input-field">
                 <i className="fas fa-envelope"></i>
-                <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" placeholder="Email" />
+                <input
+                  // onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Email"
+                  ref={email}
+                />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" />
+                <input
+                  // onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                  ref={password}
+                />
               </div>
               <div className="input-field">
                 <i className="fas fa-envelope"></i>
-                <input onChange={(e) => setPhone(e.target.value)} type="text" name="phone" placeholder="Phone" />
-              </div><div className="input-field">
-                <i className="fas fa-envelope"></i>
-                <input onChange={(e) => setBio(e.target.value)} type="text" name="bio" placeholder="Bio" />
+                <input
+                  // onChange={(e) => setPhone(e.target.value)}
+                  type="password"
+                  placeholder="Password Again"
+                  ref={passwordAgain}
+                />
               </div>
-              <button onClick={adduser} type="submit" className="btnn" value="Sign up" >Sing up</button>
-
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input
+                  // onChange={(e) => setBio(e.target.value)}
+                  type="text"
+                  placeholder="Bio"
+                  ref={bio}
+                />
+              </div>
+              <button
+                onClick={singUp}
+                type="submit"
+                className="btnn"
+                value="Sign up"
+              >
+                Sing up
+              </button>
             </form>
           </div>
         </div>
@@ -127,12 +189,16 @@ const LogInSignUp = () => {
             <div className="content">
               <h3>New here ?</h3>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                ex ratione. Aliquid!
-            </p>
-              <button onClick={HandleChange} className="btnn transparent" id="sign-up-btn">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Debitis, ex ratione. Aliquid!
+              </p>
+              <button
+                onClick={HandleChange}
+                className="btnn transparent"
+                id="sign-up-btn"
+              >
                 Sign up
-            </button>
+              </button>
             </div>
             <img src="./images/singupnow.png" className="image" alt="img" />
           </div>
@@ -142,19 +208,17 @@ const LogInSignUp = () => {
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
                 laboriosam ad deleniti.
-            </p>
+              </p>
               <button className="btnn transparent" id="sign-in-btn">
                 Sign in
-            </button>
+              </button>
             </div>
             <img className="image" src="./images/singinnow.png" alt="img" />
           </div>
         </div>
       </div>
-      )}
     </div>
+  );
+};
 
-  )
-}
-
-export default LogInSignUp
+export default LogInSignUp;

@@ -1,0 +1,20 @@
+.chatmenu{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.chatmenu:hover{
+    background-color: rgb(241, 241, 241);
+}
+.chatmenuImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.chatmenuName{
+    font-weight: 500;
+    color: rgb(71, 71, 71);
+}

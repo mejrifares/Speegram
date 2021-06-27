@@ -1,5 +1,5 @@
-.cardstyle {
-    /* display: flex !important; */
-    margin-top: 50px;
-    margin-left: 590px;
+.HomeContainer{
+    display: flex;
+    width: 100% ;
+    /* background: #f0f2f5; */
 }

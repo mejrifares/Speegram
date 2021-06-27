@@ -1,44 +1,112 @@
-.boxform {
-    display: block;
-    margin: 30px 0 0 700px;
-    /* position: absolute; */
-    /* top: 50%; */
-    left: 50%;
-    width: 500px;
+.share {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
 }
 
-input.inp{
-    position: relative;
-    display: inline-block;
-    font-size: 15px;
-    box-sizing: border-box;
-    transition: .5s;
+.shareWrapper {
+  padding: 10px;
 }
 
-input.inp[type="text"]
-{
-  width: 300px;
-  height: 70px;
+.shareTop {
+  display: flex;
+  align-items: center;
+}
+
+.shareProfileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.shareInput {
   border: none;
-  outline: none;
-  padding: 0 25px;
-  border-radius: 25px;
+  width: 80%;
 }
 
-button.inpt
-{
-    position: relative;
-    border-radius:25px;
-    width: 120px;
-    height: 40px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    margin-top: 10px;
-    background: #fff;
-      
+.shareInput:focus {
+  outline: none;
 }
-/* .inpt:hover{
-    background: blue;
-    transition: 1s;
-} */
+
+.shareHr {
+  margin: 20px;
+}
+
+.shareImgContainer {
+  padding: 0 20px 10px 20px;
+  position: relative;
+}
+.shareImg {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.shareCancelImg {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 25px;
+}
+
+.shareBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shareOptions {
+  /* margin-left: 20px; */
+  display: flex;
+  width: 150px;
+  height: 40px;
+
+}
+.shareoption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.shareoption:hover{
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+  color: #fff;
+  transition: .2s;
+  
+}
+
+
+.shareIcon {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.shareOptionText {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.shareButton {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  /* background-color: #9b63ff; */
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+}

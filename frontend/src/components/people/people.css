@@ -1,0 +1,72 @@
+
+.rightbarInfoBack{
+    flex:8;
+}
+
+
+.people {
+  display: flex;
+}
+.rightbarInfoBack {
+  background-color: rgb(247, 249, 250);
+  border-color: rgb(247, 249, 250);
+  border-radius: 16px;
+}
+
+.rightbarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.rightbarFriend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding-left: 10px;
+  /* margin-bottom: 10px; */
+  border-radius: 10px;
+  cursor: pointer;
+}
+.rightbarFriend:hover {
+  background: #e4e6e9;
+  transition: 0.3s;
+}
+
+.rightbarProfileImgContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  position: relative;
+}
+.rightbarProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: solid 3px limegreen;
+  margin-right: 10px;
+}
+
+.rightbarUsername {
+  font-weight: 500;
+}
+.btnfollow {
+  width: 85px;
+  height: 31px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+  color: #a88beb;
+  font-weight: 600;
+  font-size: 15px;
+}
+.btnfollow:hover {
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+  color: #fff;
+  transition: 0.4s;
+}

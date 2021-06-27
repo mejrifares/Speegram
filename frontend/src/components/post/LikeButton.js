@@ -1,51 +1,55 @@
-import React, {useState, useEffect} from 'react'
-import { Button, Icon, Label,} from 'semantic-ui-react';
-import {useDispatch,useSelector } from "react-redux"
-import { likePost } from '../../JS/action/Post.action';
+import React, {useState, useEffect, useContext} from 'react'
+import "./postcard.css"
+// import { Button, Icon, Label,} from 'semantic-ui-react';
+// import {useDispatch,useSelector } from "react-redux"
+// import { likePost } from '../../JS/action/Post.action';
+import {IoMdHeartEmpty} from "react-icons/io"
+import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
 // import {AppContext} from "../AppContext"
 
 
 
 const LikeButton = ({post}) => {
 
-    // const posts = useSelector((state) => state.postReducer);
 
-    const loading = useSelector((state) => state.userReducer.loading);
+    // const [liked, setLiked] = useState(false);
+    // const dispatch = useDispatch();
 
-    const [liked, setLiked] = useState(false);
-    // const uid = useContext(AppContext);
-    const dispatch = useDispatch();
-  
-
-    // const unlike = () => {
-    //   dispatch(unlikePost(post._id))
-    //   setLiked(false);
-    // };
-  
-    // useEffect(() => {
-    //   if (post.likers.includes(post._id)) setLiked(true);
-    //   else setLiked(false);
-    // }, [post.likers, liked]);
-
-    const like = () => {
-        dispatch(likePost(post._id))
+    // const like = () => {
+    //     dispatch(likePost(post._id))
       
-        setLiked(true);
+    //     setLiked(true);
         
+    //   };
+    const [like, setLike] = useState(post.likes.length);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const { user} = useContext(AuthContext);
+
+
+    useEffect(() => {
+        setIsLiked(post.likes.includes(user._id));
+      }, [user._id, post.likes]);
+
+      const likersFun = () => {
+        try {
+          axios.put("/postusers/" + post._id + "/like", { userId: user._id });
+        } catch (err) {}
+        setLike(isLiked ? like - 1 : like + 1);
+        setIsLiked(!isLiked);
       };
+
+
     
     return (
         <div>
-            <Button as='div' labelPosition='right'>
-                
-                <Button onClick={like} color='red' basic>
-                    <Icon name='heart' />
-                </Button>
-            <Label basic color='red' pointing='left'>
-                <span>{post.likers.length}</span>
-                </Label>
-            
-            </Button>
+            <div className="likesIconStyle">
+             <IoMdHeartEmpty onClick={likersFun}  style={{fontSize:"30px",cursor:"pointer"}} />
+             <div className="postLikes">
+             {/* <span>{like} likes</span> */}
+             </div>
+            </div>
         </div>
     )
 }

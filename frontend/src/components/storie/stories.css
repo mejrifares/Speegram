@@ -1,0 +1,25 @@
+.storieWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.storieItem{
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+}
+.storieImg{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #a88beb;
+    cursor: pointer;
+}
+.storieUsername{
+    margin-top: 10px;
+}
+.storieName{
+    font-size: 15px;
+}

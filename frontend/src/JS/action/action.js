@@ -44,7 +44,7 @@ export const profile = () => async (dispatch) => {
       };
   
       const user = await axios.get("/user/current", config);
-        console.log(user)
+        console.log(user,"aaa")
       dispatch({ type: GET_PROFILE_SUCCESS, payload: user.data });
     } catch (error) {
       dispatch({ type: GET_PROFILE_FAIL, payload: error.response.data });

@@ -86,6 +86,13 @@ form.sign-in-form {
   transition: 0.5s;
   font-size: 1.1rem;
 }
+.inputIcon{
+  text-align: center;
+  line-height: 50px;
+  font-size: 19px;
+  color: #acacac;
+
+}
 
 .input-field input {
   background: none;
@@ -134,7 +141,9 @@ form.sign-in-form {
 
 .btnn {
   width: 150px;
-  background-color: #9B63FF;
+  /* background-color: #9B63FF; */
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
   border: none;
   outline: none;
   height: 49px;
@@ -168,7 +177,9 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #9B63FF 40%, #04befe 100%);
+  /* background-image: linear-gradient(-45deg, #9B63FF 40%, #04befe 100%); */
+  /* background-color: #f8ceec; */
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 30%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;

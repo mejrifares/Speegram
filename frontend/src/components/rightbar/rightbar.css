@@ -1,0 +1,134 @@
+.rightbar {
+  flex: 3;
+}
+
+.rightbarTitle {
+  /* border-bottom: solid 1px rgb(214, 214, 214); */
+  height: 50px;
+  align-items: center;
+  padding: 14px 0 0 14px;
+}
+
+.rightbarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.rightbarFriend {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding-left: 10px;
+  /* margin-bottom: 10px; */
+  border-radius: 10px;
+  cursor: pointer;
+}
+.rightbarFriend:hover {
+  background: #e4e6e9;
+  transition: 0.3s;
+}
+
+.rightbarProfileImgContainer {
+  margin-right: 10px;
+  position: relative;
+}
+.rightbarProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: solid 3px limegreen;
+}
+
+.rightbarUsername {
+  font-weight: 500;
+}
+
+/* profile rightbar style */
+.rightbarInfoContainer {
+  display: block;
+}
+
+.rightbarInfoBack {
+  background-color: rgb(247, 249, 250);
+  border-color: rgb(247, 249, 250);
+  border-radius: 16px;
+  margin: 35px 100px 10px 0;
+}
+
+.rightBarTitle {
+  padding: 13px 15px 13px 15px;
+  font-size: 1.5rem;
+  color: rgb(107, 107, 107);
+  font-weight: 600;
+}
+
+.rightbarInfoItem {
+  padding: 13px 15px 13px 15px;
+}
+.rightbarInfoItem:hover {
+  background-color: rgb(236, 239, 241);
+  cursor: pointer;
+  transition: 0.2s;
+  /* border-radius: 16px; */
+}
+
+.bordering {
+  border-bottom: 1px solid rgb(235, 238, 240);
+}
+
+.rightbarInfoKey {
+  color: rgb(108, 111, 112);
+}
+.rightbarInfoValue {
+  color: rgb(108, 111, 112);
+}
+
+/* ads style */
+
+.rightbarInfoAds {
+  background-color: rgb(247, 249, 250);
+  border-color: rgb(247, 249, 250);
+  border-radius: 16px;
+  margin: 35px 100px 10px 0;
+  width: 420px;
+  height: auto;
+}
+
+.rightbarInfoAdsHeader {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  padding-left: 10px;
+}
+.rightbarInfoAdsValue {
+  font-weight: 500;
+  color: rgb(122, 122, 122);
+}
+.rightbarInfoAdsImgWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightbarInfoAdsImg {
+  width: 100%;
+  height: 300px;
+  cursor: pointer;
+  /* border-radius: 10px; */
+}
+.rightbarInfoAdsBottom {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.rightbarInfoAdsBottomItem {
+  text-align: center;
+  width: 100%;
+  user-select: none;
+}
